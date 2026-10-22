@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mall Buyer Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Will this shopper buy?</h1>
+    <p>Enter a mall customer's details and the model tells you how likely they are to make a purchase.</p>
+  </header>
+
+  <main class="board">
+    <form id="form" class="panel" novalidate>
+      <h2>Shopper details</h2>
+
+      <label for="age">Age</label>
+      <input id="age" name="age" type="number" min="18" max="100" placeholder="e.g. 29" required>
+
+      <label for="income">Annual income (k$)</label>
+      <input id="income" name="income" type="number" min="0" step="0.1" placeholder="e.g. 60" required>
+
+      <label for="score">Spending score (1–100)</label>
+      <input id="score" name="score" type="number" min="1" max="100" placeholder="e.g. 75" required>
+
+      <fieldset>
+        <legend>Gender</legend>
+        <label class="pill"><input type="radio" name="gender" value="Male" checked><span>Male</span></label>
+        <label class="pill"><input type="radio" name="gender" value="Female"><span>Female</span></label>
+      </fieldset>
+
+      <button id="btn" type="submit">Predict purchase</button>
+      <p id="error" class="error" role="alert" hidden></p>
+    </form>
+
+    <section class="panel result" id="result" aria-live="polite">
+      <h2>Prediction</h2>
+      <p id="empty" class="empty">Fill in the shopper's details and press Predict purchase.</p>
+
+      <div id="out" hidden>
+        <p id="verdict" class="verdict"></p>
+        <p class="big"><span id="pct">0</span>%</p>
+        <p class="sub">chance of buying</p>
+        <div id="tiles" class="tiles" aria-hidden="true"></div>
+        <div class="split">
+          <span>Buy <b id="pBuy">0%</b></span>
+          <span>Won't buy <b id="pNo">0%</b></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
